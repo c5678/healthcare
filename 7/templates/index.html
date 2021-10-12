@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Chandni ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="predict">
+	<h1>Predicting drug persistency for patient</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+
+    
+        <p>Gender</p>
+        <select id="Gender" class="select" name="Gender" placeholder="Gender" required="required">
+        <option value="0">Female</option>
+        <option value="1">Male</option>
+        </select>
+        <br></br>
+        
+        <p>Race</p>
+        <select id="Race" class="select" name="Race" placeholder="Race" required="required">
+        <option value="2">Caucasian</option>
+        <option value="1">Asian</option>
+        <option value="3">Other</option>
+        </select>
+        <br></br>
+
+        <p>Dexa_Freq_During_Rx</p>
+        <input type="text" name="Dexa_Freq_During_Rx" placeholder="Dexa_Freq_During_Rx" required="required" />
+        <br></br>
+ 
+
+        <p>Dexa_During_Rx</p>
+        <select id="region" class="select" name="Dexa_During_Rx" placeholder="Dexa_During_Rx" required="required">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+        </select>
+
+        <br></br>
+
+        <p>Frag_Frac_Prior_Ntm</p>
+        <select id="region" class="select" name="Frag_Frac_Prior_Ntm" placeholder="Frag_Frac_Prior_Ntm" required="required">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+        </select>
+
+        <br></br> 
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
